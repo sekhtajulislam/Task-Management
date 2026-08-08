@@ -7,6 +7,7 @@ function TaskForm() {
         e.preventDefault();
         // Navigate back to the home page on submit
         
+
         navigate("/");
     };
 
