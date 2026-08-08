@@ -1,12 +1,12 @@
 import React from "react"
 import "../App.css"
-function Card(){
+function Card(props){
     return(
         <div className="card">
-            <h3>Task Title</h3>
-            <p>Description</p>
-            <p>Due Date</p>
-            <p>Due Time</p>
+            <h3>{props.title}</h3>
+            <p>{props.description}</p>
+            <p>{props.dueDate}</p>
+            <p>{props.dueTime}</p>
             <div>
             <button className="btn">Edit</button>
             <button className="btn">Delete</button>
