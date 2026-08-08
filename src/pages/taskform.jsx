@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom"
 
-function TaskForm() {
+function TaskForm(props) {
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // Navigate back to the home page on submit
-        
+       props.addtask(e.target.title.value,e.target.description.value,e.target.dueDate.value,e.target.dueTime.value)
 
         navigate("/");
     };
