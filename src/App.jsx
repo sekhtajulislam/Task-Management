@@ -9,23 +9,33 @@ function App() {
   
   const [task,setTask]=React.useState([])
   function addtask(title,description,dueDate,dueTime){
-    setTask([...task,{title,description,dueDate,dueTime}])
+    setTask([...task,{id: Date.now(), title,description,dueDate,dueTime,completed:false}])
   }
-
+  function toggleComplete(id){
+    const updatedTasks = task.map(item => 
+      item.id === id ? { ...item, completed: !item.completed } : item
+    )
+    setTask(updatedTasks)
+  }
   return (
     <div>
       <Header />
       <Routes>
         <Route path="/" element={<>
         <AddTask />
-        {task.map((item,index)=>(
-          <Card key={index}
-          title={item.title}
-          description={item.description}
-          dueDate={item.dueDate}
-          dueTime={item.dueTime}
-          />
-  ))}
+        <div className="card-container">
+        {[...task]
+          .sort((a, b) => a.completed - b.completed).map((item)=>(
+            <Card key={item.id}
+            title={item.title}
+            description={item.description}
+            dueDate={item.dueDate}
+            dueTime={item.dueTime}
+            completed={item.completed}
+            onToggleComplete={() => toggleComplete(item.id)}
+            />
+          ))}
+        </div>
         </>} />
         <Route path="/add-task" element={<TaskForm addtask={addtask} />} />
       </Routes>
