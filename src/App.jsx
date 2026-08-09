@@ -17,6 +17,10 @@ function App() {
     )
     setTask(updatedTasks)
   }
+  function deleteTask(id){
+    const updateTask=task.filter((item)=>item.id !=id)
+    setTask(updateTask)
+  }
   return (
     <div>
       <Header />
@@ -27,11 +31,13 @@ function App() {
         {[...task]
           .sort((a, b) => a.completed - b.completed).map((item)=>(
             <Card key={item.id}
+            id={item.id}
             title={item.title}
             description={item.description}
             dueDate={item.dueDate}
             dueTime={item.dueTime}
             completed={item.completed}
+            deleteTask={deleteTask}
             onToggleComplete={() => toggleComplete(item.id)}
             />
           ))}

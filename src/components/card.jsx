@@ -1,6 +1,9 @@
 import React from "react"
 import "../App.css"
 function Card(props){
+    function deleteCard(){
+        props.deleteTask(props.id)
+    }
     return(
         <div className={`card ${props.completed ? "inactive": ""}`}>
             <h3>{props.title}</h3>
@@ -9,7 +12,7 @@ function Card(props){
             <p>{props.dueTime}</p>
             <div>
             <button className="btn">Edit</button>
-            <button className="btn">Delete</button>
+            <button className="btn" onClick={deleteCard}>Delete</button>
             <button className="btn" onClick={props.onToggleComplete}>
                 Mark as Complete
             </button>
