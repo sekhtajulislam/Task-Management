@@ -361,7 +361,7 @@ button:active {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
-  padding: 20px 0;
+  padding: 20px 10px;
   width: 100%;
 }
 
