@@ -8,14 +8,26 @@ function Card(props){
         <div className={`card ${props.completed ? "inactive": ""}`}>
             <h3>{props.title}</h3>
             <p>{props.description}</p>
-            <p>{props.dueDate}</p>
-            <p>{props.dueTime}</p>
-            <div>
-            <button className="btn">Edit</button>
-            <button className="btn" onClick={deleteCard}>Delete</button>
-            <button className="btn" onClick={props.onToggleComplete}>
-                Mark as Complete
-            </button>
+            
+            <div className="card-meta">
+                {props.dueDate && (
+                    <span>
+                        📅 {props.dueDate}
+                    </span>
+                )}
+                {props.dueTime && (
+                    <span>
+                        ⏰ {props.dueTime}
+                    </span>
+                )}
+            </div>
+
+            <div className="card-actions">
+                <button className="btn btn-edit">Edit</button>
+                <button className="btn btn-delete" onClick={deleteCard}>Delete</button>
+                <button className="btn btn-complete" onClick={props.onToggleComplete}>
+                    {props.completed ? "Undo" : "Complete"}
+                </button>
             </div>
         </div>
     )
